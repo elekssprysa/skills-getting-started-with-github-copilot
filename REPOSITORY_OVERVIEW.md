@@ -1,8 +1,48 @@
 # Repository Overview: Mergington High School Activities Management System
 
+## Quick Start
+
+To run this application locally:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/elekssprysa/skills-getting-started-with-github-copilot.git
+cd skills-getting-started-with-github-copilot
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Navigate to source directory
+cd src
+
+# 4. Start the server
+uvicorn app:app --reload
+
+# 5. Open your browser to http://localhost:8000
+```
+
 ## Main Functionality
 
 This repository contains a **High School Activity Management System** - a full-stack web application that enables students at Mergington High School to view and sign up for extracurricular activities. The system is built as a learning exercise for GitHub Copilot, demonstrating how AI-assisted coding can help build complete web applications.
+
+## Repository Structure
+
+```
+skills-getting-started-with-github-copilot/
+├── .devcontainer/          # Dev container configuration
+├── .github/                # GitHub workflows and exercise steps
+├── .vscode/                # VS Code debug configurations
+├── src/                    # Main application source code
+│   ├── static/            # Frontend static files
+│   │   ├── index.html    # Main HTML page
+│   │   ├── app.js        # JavaScript application logic
+│   │   └── styles.css    # CSS styling
+│   ├── app.py            # FastAPI backend application
+│   └── README.md         # Technical documentation
+├── requirements.txt       # Python dependencies
+├── README.md             # Congratulations page
+└── REPOSITORY_OVERVIEW.md # This documentation file
+```
 
 ## Key Components
 
