@@ -84,6 +84,63 @@ Congratulatory page indicating successful completion of the GitHub Skills exerci
 
 ## System Architecture
 
+### Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Browser                             │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │  HTML (index.html)                                  │   │
+│  │  - Header with school branding                      │   │
+│  │  - Activities display section                       │   │
+│  │  - Signup form section                              │   │
+│  └──────────────────┬──────────────────────────────────┘   │
+│                     │                                       │
+│  ┌──────────────────▼──────────────────────────────────┐   │
+│  │  JavaScript (app.js)                                │   │
+│  │  - Fetch activities from API                        │   │
+│  │  - Render activity cards dynamically                │   │
+│  │  - Handle form submissions                          │   │
+│  │  - Display success/error messages                   │   │
+│  └──────────────────┬──────────────────────────────────┘   │
+│                     │                                       │
+│  ┌──────────────────▼──────────────────────────────────┐   │
+│  │  CSS (styles.css)                                   │   │
+│  │  - Responsive layout                                │   │
+│  │  - Card-based activity display                      │   │
+│  │  - Form styling                                     │   │
+│  └─────────────────────────────────────────────────────┘   │
+└──────────────────────┬──────────────────────────────────────┘
+                       │ HTTP Requests
+                       │ (REST API calls)
+┌──────────────────────▼──────────────────────────────────────┐
+│                   FastAPI Server                            │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │  API Endpoints (app.py)                             │   │
+│  │  ┌───────────────────────────────────────────────┐  │   │
+│  │  │ GET /                                         │  │   │
+│  │  │  └─> Redirect to /static/index.html          │  │   │
+│  │  ├───────────────────────────────────────────────┤  │   │
+│  │  │ GET /activities                               │  │   │
+│  │  │  └─> Return all activities (JSON)            │  │   │
+│  │  ├───────────────────────────────────────────────┤  │   │
+│  │  │ POST /activities/{name}/signup                │  │   │
+│  │  │  └─> Validate & add student to activity      │  │   │
+│  │  └───────────────────────────────────────────────┘  │   │
+│  └─────────────────────┬───────────────────────────────┘   │
+│                        │                                    │
+│  ┌─────────────────────▼───────────────────────────────┐   │
+│  │  In-Memory Database                                 │   │
+│  │  {                                                  │   │
+│  │    "Chess Club": {...},                            │   │
+│  │    "Programming Class": {...},                     │   │
+│  │    "Basketball Team": {...},                       │   │
+│  │    ...9 activities total                           │   │
+│  │  }                                                  │   │
+│  └─────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
+
 ### Request Flow
 
 1. **User Opens Application**:
